@@ -1,5 +1,6 @@
 import { Room } from "../../employee/entities/room";
 import Entity from "../../../core/entities/entity";
+import Identity from "../../../core/entities/identity";
 
 type BookingType = {
   room: Room;
@@ -10,8 +11,8 @@ type BookingType = {
 };
 
 export class Booking extends Entity<BookingType> {
-  constructor(data: BookingType, id?: string) {
-    super(data, id);
+  static create(data: BookingType, id?: Identity) {
+    return new Booking(data, id);
   }
 
   get room(): Room {

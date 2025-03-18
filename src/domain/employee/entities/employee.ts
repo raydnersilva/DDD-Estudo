@@ -1,4 +1,5 @@
 import Entity from "../../../core/entities/entity";
+import Identity from "../../../core/entities/identity";
 
 type EmployeeType = {
   name: string;
@@ -7,8 +8,8 @@ type EmployeeType = {
 };
 
 export class Employee extends Entity<EmployeeType> {
-  constructor(data: EmployeeType, id?: string) {
-    super(data, id);
+  static create(data: EmployeeType, id?: Identity) {
+    return new Employee(data, id);
   }
 
   get name(): string {
