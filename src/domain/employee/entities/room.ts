@@ -1,3 +1,4 @@
+import { Optional } from "../../../core/@types/optional";
 import Entity from "../../../core/entities/entity";
 import Identity from "../../../core/entities/identity";
 
@@ -13,8 +14,21 @@ type RoomType = {
 };
 
 export class Room extends Entity<RoomType> {
-  static create(data: RoomType, id?: Identity) {
-    return new Room(data, id);
+  static create(
+    data: Optional<RoomType, "hasWifi" | "hasAir" | "hasKitchen" | "isPetFriendly" | "isAvailable">,
+    id?: Identity
+  ) {
+    return new Room(
+      {
+        ...data,
+        hasWifi: data.hasWifi ?? false,
+        hasAir: data.hasAir ?? false,
+        hasKitchen: data.hasKitchen ?? false,
+        isPetFriendly: data.isPetFriendly ?? false,
+        isAvailable: data.isAvailable ?? true,
+      },
+      id
+    );
   }
 
   get name(): string {
