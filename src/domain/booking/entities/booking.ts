@@ -1,5 +1,5 @@
-import { randomUUID } from "node:crypto";
 import { Room } from "../../employee/entities/room";
+import Entity from "../../../core/entities/entity";
 
 type BookingType = {
   room: Room;
@@ -9,20 +9,44 @@ type BookingType = {
   isActive: boolean;
 };
 
-export class Booking {
-  private id: string;
-  private room: Room;
-  private days: number;
-  private customer: string;
-  private email: string;
-  private isActive: boolean;
-
+export class Booking extends Entity<BookingType> {
   constructor(data: BookingType, id?: string) {
-    this.room = data.room;
-    this.days = data.days;
-    this.customer = data.customer;
-    this.email = data.email;
-    this.isActive = data.isActive;
-    this.id = id ?? randomUUID();
+    super(data, id);
+  }
+
+  get room(): Room {
+    return this.attributes.room;
+  }
+
+  get days(): number {
+    return this.attributes.days;
+  }
+
+  set days(value: number) {
+    this.attributes.days = value;
+  }
+
+  get customer(): string {
+    return this.attributes.customer;
+  }
+
+  set customer(value: string) {
+    this.attributes.customer = value;
+  }
+
+  get email(): string {
+    return this.attributes.email;
+  }
+
+  set email(value: string) {
+    this.attributes.email = value;
+  }
+
+  get isActive(): boolean {
+    return this.attributes.isActive;
+  }
+
+  set isActive(value: boolean) {
+    this.attributes.isActive = value;
   }
 }

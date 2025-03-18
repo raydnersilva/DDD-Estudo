@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import Entity from "../../../core/entities/entity";
 
 type RoomType = {
   name: string;
@@ -11,26 +12,72 @@ type RoomType = {
   isAvailable: boolean;
 };
 
-export class Room {
-  private id: string;
-  private name: string;
-  private price: string;
-  private image: string;
-  private hasWifi: boolean;
-  private hasAir: boolean;
-  private hasKitchen: boolean;
-  private isPetFriendly: boolean;
-  private isAvailable: boolean;
-
+export class Room extends Entity<RoomType> {
   constructor(data: RoomType, id?: string) {
-    this.name = data.name;
-    this.price = data.price;
-    this.image = data.image;
-    this.hasWifi = data.hasWifi;
-    this.hasAir = data.hasAir;
-    this.hasKitchen = data.hasKitchen;
-    this.isPetFriendly = data.isPetFriendly;
-    this.isAvailable = data.isAvailable;
-    this.id = id ?? randomUUID();
+    super(data, id);
+  }
+
+  get name(): string {
+    return this.attributes.name;
+  }
+
+  set name(value: string) {
+    this.attributes.name = value;
+  }
+
+  get price(): string {
+    return this.attributes.price;
+  }
+
+  set price(value: string) {
+    this.attributes.price = value;
+  }
+
+  get image(): string {
+    return this.attributes.image;
+  }
+
+  set image(value: string) {
+    this.attributes.image = value;
+  }
+
+  get hasWifi(): boolean {
+    return this.attributes.hasWifi;
+  }
+
+  set hasWifi(value: boolean) {
+    this.attributes.hasWifi = value;
+  }
+
+  get hasAir(): boolean {
+    return this.attributes.hasAir;
+  }
+
+  set hasAir(value: boolean) {
+    this.attributes.hasAir = value;
+  }
+
+  get hasKitchen(): boolean {
+    return this.attributes.hasKitchen;
+  }
+
+  set hasKitchen(value: boolean) {
+    this.attributes.hasKitchen = value;
+  }
+
+  get isPetFriendly(): boolean {
+    return this.attributes.isPetFriendly;
+  }
+
+  set isPetFriendly(value: boolean) {
+    this.attributes.isPetFriendly = value;
+  }
+
+  get isAvailable(): boolean {
+    return this.attributes.isAvailable;
+  }
+
+  set isAvailable(value: boolean) {
+    this.attributes.isAvailable = value;
   }
 }
