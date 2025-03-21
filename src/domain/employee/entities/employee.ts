@@ -1,9 +1,10 @@
 import Entity from "../../../core/entities/entity";
 import Identity from "../../../core/entities/identity";
+import Email from "../../shared/value-objects/email";
 
 type EmployeeType = {
   name: string;
-  email: string;
+  email: Email;
   password: string;
 };
 
@@ -20,11 +21,11 @@ export class Employee extends Entity<EmployeeType> {
     this.attributes.name = value;
   }
 
-  get email(): string {
+  get email(): Email {
     return this.attributes.email;
   }
 
-  set email(value: string) {
+  set email(value: Email) {
     this.attributes.email = value;
   }
 
